@@ -1,8 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
+import axios from "axios";
 import { Input } from "./components/input";
-import React, { useState, FormEventHandler } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import React, { useState } from "react";
+import { addToStorage } from "./helper/helper";
 
 const LoginWrapper = styled.section`
   display: flex;
@@ -48,6 +52,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const router = useRouter();
 
   const upDateDetails = (key: string, value: string | number | boolean) => {
     setLogin({
@@ -56,15 +61,32 @@ const Login = () => {
     });
   };
 
-  const handleAmdminLogin = (e: React.SyntheticEvent) => {
+  const handleAdminLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    console.log({ login });
+
+    if (!login.email || !login.password) {
+      alert("Please enter email and password!");
+      return;
+    }
+    try {
+      const data = await axios.post(
+        `${process.env.API_END_POINT!}login`,
+        login
+      );
+
+      const user = data.data.data;
+      const token = data.data.token;
+      addToStorage(user, token);
+      router.push("/dashboard");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <LoginWrapper>
       <h3>Sign in with your email</h3>
-      <Form onSubmit={handleAmdminLogin}>
+      <Form onSubmit={handleAdminLogin}>
         <Input
           value={login.email}
           type="email"
@@ -81,6 +103,9 @@ const Login = () => {
         />
         <Button type="submit">Sign in</Button>
       </Form>
+      <p>
+        Don&apos;t have an account &nbsp;<Link href="/login">Sign up</Link>
+      </p>
     </LoginWrapper>
   );
 };
