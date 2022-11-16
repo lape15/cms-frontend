@@ -1,51 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import styled from "styled-components";
 import axios from "axios";
 import { Input } from "./components/input";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import React, { useState } from "react";
 import { addToStorage } from "./helper/helper";
-
-const LoginWrapper = styled.section`
-  display: flex;
-  height: 100vh;
-  flex-flow: column nowrap;
-  width: 100%;
-  padding: 120px 80px;
-  align-items: center;
-
-  & h3 {
-    margin-block-start: 20px;
-  }
-  @screen (max-width:512px) {
-    padding: 20px;
-  }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 5px;
-  width: 400px;
-  margin: 10px auto;
-  @screen (max-width:512px) {
-    width: 100%;
-  }
-`;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 8px 20px;
-  color: white;
-  font-size: 14px;
-  background: #10ab51;
-  margin-block-start: 20px;
-  cursor: pointer;
-  border-radius: 2px;
-  border: none;
-`;
+import { LoginWrapper, Form, Button } from "./helper/styles";
 
 const Login = () => {
   const [login, setLogin] = useState({

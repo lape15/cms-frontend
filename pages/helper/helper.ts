@@ -6,7 +6,11 @@ type User = {
 };
 
 export const addToStorage = (user: User, token: string) => {
-  console.log(token, user);
   localStorage.setItem("user", JSON.stringify(user));
   localStorage.setItem("token", token);
+};
+
+export const removeFromStorage = () => {
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
 };

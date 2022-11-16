@@ -1,50 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import styled from "styled-components";
+import { addToStorage } from "./helper/helper";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { Input } from "./components/input";
 import Link from "next/link";
 import React, { useState } from "react";
-
-const LoginWrapper = styled.section`
-  display: flex;
-  height: 100vh;
-  flex-flow: column nowrap;
-  width: 100%;
-  padding: 80px;
-  align-items: center;
-
-  & h3 {
-    margin-block-start: 10px;
-  }
-  @screen (max-width:512px) {
-    padding: 20px;
-  }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 5px;
-  width: 400px;
-  margin: 10px auto;
-  @screen (max-width:512px) {
-    width: 100%;
-  }
-`;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 8px 20px;
-  color: white;
-  font-size: 14px;
-  background: #10ab51;
-  margin-block-start: 20px;
-  cursor: pointer;
-  border-radius: 2px;
-  border: none;
-`;
+import { LoginWrapper, Form, Button } from "./helper/styles";
 
 const userObj = {
   firstName: "",
@@ -55,7 +17,7 @@ const userObj = {
 };
 export default function Home() {
   const [user, setUser] = useState(userObj);
-
+  const router = useRouter();
   const upDateDetails = (key: string, value: string | number | boolean) => {
     setUser({
       ...user,
@@ -79,7 +41,10 @@ export default function Home() {
         `${process.env.API_END_POINT!}signup`,
         user
       );
-      console.log(data);
+      const userData = data.data.data;
+      const token = data.data.token;
+      addToStorage(userData, token);
+      router.push("/dashboard");
     } catch (err) {
       console.log(err);
     }

@@ -1,24 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { InputWrapper } from "../helper/styles";
 
-const InputWrapper = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 5px;
-  margin-block-start: 20px;
-  margin-end-start: 20px;
-
-  & label {
-    color: #ccc;
-    font-size: 14px;
-  }
-  & input {
-    padding: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-  }
-`;
 type InputProp = {
   label: string;
   info?: string;
