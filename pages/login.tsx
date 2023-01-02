@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import axios from "axios";
-import { Input } from "./components/input";
+import { Input } from "../components/input";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import React, { useState } from "react";
-import { addToStorage } from "./helper/helper";
-import { LoginWrapper, Form, Button } from "./helper/styles";
+import { addToStorage } from "../helper/helper";
+import { LoginWrapper, Form, Button, LinkWrapper } from "../helper/styles";
 
 const Login = () => {
   const [login, setLogin] = useState({
@@ -64,9 +64,9 @@ const Login = () => {
         />
         <Button type="submit">Sign in</Button>
       </Form>
-      <p>
-        Don&apos;t have an account &nbsp;<Link href="/login">Sign up</Link>
-      </p>
+      <LinkWrapper>
+        Don&apos;t have an account? &nbsp;<Link href="/">Sign up</Link>
+      </LinkWrapper>
     </LoginWrapper>
   );
 };

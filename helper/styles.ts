@@ -57,3 +57,54 @@ export const InputWrapper = styled.div`
     margin-top: 5px;
   }
 `;
+
+export const LinkWrapper = styled.p`
+  color: white;
+  & a {
+    color: #10ab51;
+  }
+  font-size: 12px;
+`;
+
+export const DashWrapper = styled.div`
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #181c28;
+  color: white;
+  padding: 20px;
+`;
+export const MenuWrapper = styled.div`
+  flex: 1;
+  background: #141821;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 30px;
+  padding: 20px 0;
+`;
+
+export const Item = styled.button`
+  width: 100%;
+  color: #2d3342;
+  border: none;
+  background: none;
+  padding: 10px 0;
+  position: relative;
+  transition: all 0.3s ease;
+  & span {
+    font-size: 16px;
+  }
+  &.active {
+    color: white;
+  }
+  cursor: pointer;
+  &:hover {
+    color: white;
+    transform: scale(1.1);
+  }
+`;
+
+export const View = styled.div`
+  flex: 4;
+`;

@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import { addToStorage } from "./helper/helper";
+import { addToStorage } from "../helper/helper";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { Input } from "./components/input";
+import { Input } from "../components/input";
 import Link from "next/link";
 import React, { useState } from "react";
-import { LoginWrapper, Form, Button } from "./helper/styles";
+import { LoginWrapper, Form, Button, LinkWrapper } from "../helper/styles";
 
 const userObj = {
   firstName: "",
@@ -91,9 +91,9 @@ export default function Home() {
         />
         <Button type="submit">Join</Button>
       </Form>
-      <p>
-        Already have an account &nbsp; <Link href="/login">Login</Link>
-      </p>
+      <LinkWrapper>
+        Already have an account? &nbsp; <Link href="/login">Login</Link>
+      </LinkWrapper>
     </LoginWrapper>
   );
 }
