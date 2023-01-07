@@ -105,6 +105,47 @@ export const Item = styled.button`
   }
 `;
 
+export const ColumnWrap = styled.div`
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+`;
+export const Column = styled.div`
+  flex: 1;
+  font-size: 12px;
+  color: #313646;
+`;
+
 export const View = styled.div`
   flex: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid green;
+  padding: 50px 20px;
+`;
+
+export const PostItem = styled.div`
+  width: 100%;
+  padding: 5px 15px;
+  background: #242937;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  & .row {
+    flex: 1;
+    font-size: 14px;
+    color: #676d7b;
+    font-weight: 400;
+  }
+  & .row.actn {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+  }
 `;

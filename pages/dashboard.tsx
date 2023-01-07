@@ -28,7 +28,9 @@ const Dashboard = () => {
   return (
     <DashWrapper>
       <SideMenu active={view} changeView={changeView} />
-      <Posts />
+      <div>
+        <Posts />
+      </div>
     </DashWrapper>
   );
 };

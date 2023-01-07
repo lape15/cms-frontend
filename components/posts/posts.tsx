@@ -1,22 +1,41 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "../../helper/api";
-import { View } from "../../helper/styles";
+import { Column, ColumnWrap, View } from "../../helper/styles";
+import { Post } from "./post";
+
+export type Post = {
+  id: number;
+  title: string;
+  description: string;
+  post: string;
+  createdAt: string;
+  updatedAt: string;
+  published: null | boolean;
+};
+
+const columns = ["Title", "Published", "Created", ""];
 export const Posts = () => {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  const asynPost = async () => {
+    const post = await getPosts();
+    setPosts(post!);
+  };
 
   useEffect(() => {
-    getPosts();
-    console.log({ posts });
+    asynPost();
   }, []);
+
   return (
     <View>
-      {posts.length === 0
-        ? posts.map((post, idx) => (
-            <div key={idx} style={{ color: "red" }}>
-              {post}
-            </div>
-          ))
-        : "No posts  hgyfn yet"}
+      <ColumnWrap>
+        {columns.map((column) => (
+          <Column key={column}>{column}</Column>
+        ))}
+      </ColumnWrap>
+      {posts.length > 0
+        ? posts.map((post, idx) => <Post key={post.id} post={post} idx={idx} />)
+        : "No posts yet"}
     </View>
   );
 };
