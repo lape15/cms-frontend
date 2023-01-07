@@ -116,13 +116,19 @@ export const Column = styled.div`
   color: #313646;
 `;
 
-export const View = styled.div`
+export const DashView = styled.div`
   flex: 4;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const View = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   border: 1px solid green;
   padding: 50px 20px;
+  height: 100%;
 `;
 
 export const PostItem = styled.div`

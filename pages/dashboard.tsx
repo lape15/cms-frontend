@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { SideMenu } from "../components/Sidebar/menu";
-import { DashWrapper, View } from "../helper/styles";
+import { DashView, DashWrapper, View } from "../helper/styles";
 import { getCredentials } from "../helper/helper";
 import { Posts } from "../components/posts/posts";
 
@@ -28,9 +28,9 @@ const Dashboard = () => {
   return (
     <DashWrapper>
       <SideMenu active={view} changeView={changeView} />
-      <div>
+      <DashView>
         <Posts />
-      </div>
+      </DashView>
     </DashWrapper>
   );
 };
