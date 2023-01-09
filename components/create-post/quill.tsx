@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 import { Dispatch, SetStateAction } from "react";
 import "react-quill/dist/quill.snow.css";
+import { QuillWrapper } from "../../helper/styles";
 // import "react-quill/dist/quill.bubble.css";
 
 const modules = {
@@ -26,13 +27,13 @@ type EditorProp = {
 export const QuillEditor = (props: EditorProp) => {
   const { value, handleChange } = props;
   return (
-    <div className="editor">
+    <QuillWrapper className="editor">
       <ReactQuill
         modules={modules}
         theme="snow"
         value={value}
         onChange={handleChange}
       />
-    </div>
+    </QuillWrapper>
   );
 };

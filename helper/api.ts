@@ -15,3 +15,13 @@ export const getPosts = async () => {
     console.log(err);
   }
 };
+
+export const savePost = async (post: any) => {
+  try {
+    const data = await axios.post(`${url}post`, post);
+    console.log({ data });
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};

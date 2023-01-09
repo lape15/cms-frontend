@@ -182,6 +182,21 @@ export const NavHead = styled.nav`
   }
 `;
 
+export const QuillWrapper = styled.div`
+  flex: 2;
+  height: 80%;
+  & .quill {
+    height: 600px;
+    overflow-y: auto;
+    /* .ql-toolbar.ql-snow {
+        border: none;
+      } */
+    .ql-container.ql-snow {
+      border: none;
+    }
+  }
+`;
+
 export const CreateWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -193,18 +208,19 @@ export const CreateWrapper = styled.div`
     font-size: 18px;
     color: white;
   }
-  & .editor {
-    flex: 2;
-    height: 80%;
-    .quill {
-      height: 600px;
-      overflow-y: auto;
-      /* .ql-toolbar.ql-snow {
-        border: none;
-      } */
-      .ql-container.ql-snow {
-        border: none;
-      }
+
+  & .input_wrapper {
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-bottom: 1px solid #fff;
+      background: transparent;
+      margin-block-end: 10px;
+      outline: 0;
     }
   }
 `;
