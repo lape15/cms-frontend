@@ -126,7 +126,6 @@ export const View = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 1px solid green;
   padding: 50px 20px;
   height: 100%;
 `;
@@ -152,6 +151,60 @@ export const PostItem = styled.div`
       border: none;
       display: flex;
       align-items: center;
+      cursor: pointer;
+    }
+  }
+`;
+
+export const NavHead = styled.nav`
+  display: flex;
+  gap: 10px;
+  color: white;
+  padding: 20px;
+  & button {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: #6f7485;
+  }
+  & button.active {
+    color: white;
+    position: relative;
+  }
+  & button.active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background: #22c4f7;
+    left: 0;
+    bottom: -15px;
+  }
+`;
+
+export const CreateWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+  padding: 20px 40px;
+  & h2 {
+    font-size: 18px;
+    color: white;
+  }
+  & .editor {
+    flex: 2;
+    height: 80%;
+    .quill {
+      height: 600px;
+      overflow-y: auto;
+      /* .ql-toolbar.ql-snow {
+        border: none;
+      } */
+      .ql-container.ql-snow {
+        border: none;
+      }
     }
   }
 `;

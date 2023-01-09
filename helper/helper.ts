@@ -30,3 +30,12 @@ export const getCredentials = () => {
     return credentials;
   }
 };
+
+export const views = [
+  { value: "dashboard", name: "Dashboard" },
+  { value: "posts", name: "Posts" },
+  { value: "create", name: "Create new post" },
+  { value: "profile", name: "Profile" },
+  { value: "drafts", name: "Drafts" },
+  { value: "settings", name: "Settings" },
+];

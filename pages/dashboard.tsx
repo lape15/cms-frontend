@@ -4,6 +4,8 @@ import { SideMenu } from "../components/Sidebar/menu";
 import { DashView, DashWrapper, View } from "../helper/styles";
 import { getCredentials } from "../helper/helper";
 import { Posts } from "../components/posts/posts";
+import { Nav } from "../components/nav/nav";
+import { CreatePost } from "../components/create-post/create";
 
 const Dashboard = () => {
   const [view, setView] = useState("dashboard");
@@ -29,7 +31,9 @@ const Dashboard = () => {
     <DashWrapper>
       <SideMenu active={view} changeView={changeView} />
       <DashView>
-        <Posts />
+        <Nav changeView={changeView} active={view} />
+        {(view === "dashboard" || view === "posts") && <Posts />}
+        {view === "create" && <CreatePost />}
       </DashView>
     </DashWrapper>
   );

@@ -1,13 +1,5 @@
 import { MenuWrapper, Item } from "../../helper/styles";
-
-const views = [
-  { value: "dashboard", name: "Dashboard" },
-  { value: "posts", name: "Posts" },
-  { value: "create", name: "Create new post" },
-  { value: "profile", name: "Profile" },
-  { value: "drafts", name: "Drafts" },
-  { value: "settings", name: "Settings" },
-];
+import { views } from "../../helper/helper";
 
 type MenuProp = {
   active: string;
