@@ -128,6 +128,8 @@ export const View = styled.div`
   gap: 10px;
   padding: 50px 20px;
   height: 100%;
+  width: 100%;
+  position: relative;
 `;
 
 export const PostItem = styled.div`
@@ -194,6 +196,9 @@ export const QuillWrapper = styled.div`
     .ql-container.ql-snow {
       border: none;
     }
+    .ql-align-justify img {
+      width: 150px !important;
+    }
   }
 `;
 
@@ -204,10 +209,6 @@ export const CreateWrapper = styled.div`
   height: 100%;
   width: 100%;
   padding: 20px 40px;
-  & h2 {
-    font-size: 18px;
-    color: white;
-  }
 
   & .input_wrapper {
     width: 100%;
@@ -222,5 +223,59 @@ export const CreateWrapper = styled.div`
       margin-block-end: 10px;
       outline: 0;
     }
+  }
+  & .head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    & h2 {
+      font-size: 18px;
+      color: white;
+      flex: 1;
+    }
+  }
+`;
+
+export const Btns = styled.div`
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+export const Butn = styled.button`
+  width: 100px;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: white;
+  background: rgba(21, 20, 30, 0.6);
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in;
+  }
+`;
+
+export const PaginFooter = styled.div`
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  border: 1px solid blue;
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  right: 3px;
+  left: 3px;
+  align-items: center;
+
+  & .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

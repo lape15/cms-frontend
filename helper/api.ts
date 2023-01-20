@@ -4,6 +4,7 @@ const url = process.env.API_END_POINT!;
 
 const credentials = getCredentials();
 axios.defaults.headers.common["Authorization"] = `Bearer ${credentials?.token}`;
+axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";
 
 export const getPosts = async () => {
   let posts: Array<any> = [];
@@ -16,12 +17,20 @@ export const getPosts = async () => {
   }
 };
 
-export const savePost = async (post: any) => {
+type Post = {
+  title: string;
+  post: string;
+  description: string;
+  published: boolean;
+};
+
+export const savePost = async (post: Post) => {
   try {
     const data = await axios.post(`${url}post`, post);
     console.log({ data });
-    return data;
+    return true;
   } catch (err) {
     console.log(err);
+    return false;
   }
 };
