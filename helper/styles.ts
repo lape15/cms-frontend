@@ -130,6 +130,12 @@ export const View = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
+  & .post_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
 `;
 
 export const PostItem = styled.div`
@@ -263,7 +269,7 @@ export const Butn = styled.button`
 
 export const PaginFooter = styled.div`
   display: flex;
-  gap: 5px;
+  gap: 10px;
   width: 100%;
   border: 1px solid blue;
   position: absolute;
@@ -277,5 +283,22 @@ export const PaginFooter = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 2;
+
+    button.active {
+      background: transparent;
+      border: 0.5px solid #ccc;
+      outline: 0;
+      border-radius: 50%;
+    }
+  }
+  & .prv,
+  .nxt {
+    background: transparent;
+    border: 1px solid rgb(34, 196, 247);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
   }
 `;

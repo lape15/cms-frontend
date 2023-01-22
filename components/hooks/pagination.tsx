@@ -10,6 +10,7 @@ export const Pagination = (props: PaginProp) => {
   const oulinedPrev = [1, 2, 3];
   return (
     <PaginFooter className="pagin_foot">
+      <button className="prv">Prev</button>
       <div className="btns">
         {page > 3 && (
           <>
@@ -26,6 +27,7 @@ export const Pagination = (props: PaginProp) => {
 
         <button className="active">{page}</button>
       </div>
+      <button className="nxt">Next</button>
     </PaginFooter>
   );
 };

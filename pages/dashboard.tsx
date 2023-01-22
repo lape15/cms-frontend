@@ -32,6 +32,7 @@ const Dashboard = () => {
       <SideMenu active={view} changeView={changeView} />
       <DashView>
         <Nav changeView={changeView} active={view} />
+
         {(view === "dashboard" || view === "posts") && <Posts active={view} />}
         {view === "create" && <CreatePost changeView={changeView} />}
       </DashView>
