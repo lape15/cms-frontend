@@ -23,9 +23,8 @@ export const Posts = (props: PostsProp) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const { active } = props;
   const [page, setPage] = useState(1);
-  const [postsPerPage, setPostPerPage] = useState(2);
-  // const lastIndex = page * postsPerPage;
-  // const firstIndex = lastIndex - postsPerPage;
+  const [postsPerPage, setPostPerPage] = useState(10);
+
   const asynPost = async () => {
     const post = await getPosts();
     setPosts(post!);
@@ -46,15 +45,21 @@ export const Posts = (props: PostsProp) => {
 
   const renderedPosts = () => {
     const slicedPosts = posts?.slice(firstIndex, lastIndex);
-    console.log({ slicedPosts, firstIndex, lastIndex });
     return slicedPosts;
   };
-  console.log({ renderedPosts: renderedPosts() });
 
-  const changePage = () => {};
+  const changePage = (type?: string) => {
+    if (type === "next") {
+      setPage((pg) => (pg === posts.length / postsPerPage ? pg : pg + 1));
+    } else if (type === "prev") {
+      setPage((pg) => (pg === 1 ? pg : pg - 1));
+    }
+  };
+
   return (
     <View>
       <ColumnWrap>
+        {console.log({ renderedPosts: renderedPosts() })}
         {columns.map((column) => (
           <Column key={column}>{column}</Column>
         ))}
@@ -66,7 +71,13 @@ export const Posts = (props: PostsProp) => {
             ))
           : "No posts yet"}
       </div>
-      {posts?.length > 0 && <Pagination page={page} />}
+      {renderedPosts()?.length > 0 && (
+        <Pagination
+          page={page}
+          changePage={changePage}
+          lastPage={posts.length / postsPerPage}
+        />
+      )}
     </View>
   );
 };

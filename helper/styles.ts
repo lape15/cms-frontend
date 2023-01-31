@@ -271,7 +271,6 @@ export const PaginFooter = styled.div`
   display: flex;
   gap: 10px;
   width: 100%;
-  border: 1px solid blue;
   position: absolute;
   bottom: 0;
   padding: 10px;
@@ -292,10 +291,21 @@ export const PaginFooter = styled.div`
       border-radius: 50%;
     }
   }
+  & .side_btn {
+    margin: 0 15px;
+    display: flex;
+    gap: 5px;
+    & button {
+      background: transparent;
+      outline: 0;
+      border-radius: 50%;
+      border: none;
+    }
+  }
   & .prv,
   .nxt {
     background: transparent;
-    border: 1px solid rgb(34, 196, 247);
+    border: 1px solid rgba(34, 196, 247, 0.6);
     color: #fff;
     border-radius: 4px;
     font-size: 14px;
