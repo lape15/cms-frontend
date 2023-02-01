@@ -56,10 +56,12 @@ export const Posts = (props: PostsProp) => {
     }
   };
 
+  const handlepostCountChange = (cnt: number) =>
+    setPostPerPage((pt) => (pt === cnt ? pt : cnt));
+
   return (
     <View>
       <ColumnWrap>
-        {console.log({ renderedPosts: renderedPosts() })}
         {columns.map((column) => (
           <Column key={column}>{column}</Column>
         ))}
@@ -76,6 +78,8 @@ export const Posts = (props: PostsProp) => {
           page={page}
           changePage={changePage}
           lastPage={posts.length / postsPerPage}
+          postsPerPage={postsPerPage}
+          handlepostCountChange={handlepostCountChange}
         />
       )}
     </View>

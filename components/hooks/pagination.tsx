@@ -1,15 +1,27 @@
+import { ChangeEvent } from "react";
 import { PaginFooter } from "../../helper/styles";
 
 type PaginProp = {
   page: number;
   changePage: (pg: string) => void;
   lastPage: number;
+  postsPerPage: number;
+  handlepostCountChange: (ct: number) => void;
 };
+
+const postOptions = [20, 50, 100];
 export const Pagination = (props: PaginProp) => {
-  const { page, changePage, lastPage } = props;
+  const { page, changePage, lastPage, postsPerPage, handlepostCountChange } =
+    props;
   const pageMinusOne = page - 1;
   const pageMinusTwo = page - 2;
   const oulinedPrev = [0, 1, 2, 3];
+  const truncLastPage = Math.trunc(lastPage);
+
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    handlepostCountChange(Number(e.target.value));
+  };
+
   return (
     <PaginFooter className="pagin_foot">
       <button className="prv" onClick={() => changePage("prev")}>
@@ -31,9 +43,17 @@ export const Pagination = (props: PaginProp) => {
 
         <button className="active">{page}</button>
       </div>
-      {!oulinedPrev.includes(lastPage) && lastPage > page && (
-        <button>{lastPage}</button>
+      {!oulinedPrev.includes(truncLastPage) && truncLastPage !== page && (
+        <button>{truncLastPage}</button>
       )}
+
+      <div>
+        <select value={postsPerPage} onChange={handleChange}>
+          {postOptions.map((pt) => (
+            <option key={pt}>{pt}</option>
+          ))}
+        </select>
+      </div>
       <button className="nxt" onClick={() => changePage("next")}>
         Next
       </button>
