@@ -6,6 +6,7 @@ import { getCredentials } from "../helper/helper";
 import { Posts } from "../components/posts/posts";
 import { Nav } from "../components/nav/nav";
 import { CreatePost } from "../components/create-post/create";
+import { Profile } from "../components/profile/profile";
 
 const Dashboard = () => {
   const [view, setView] = useState("dashboard");
@@ -35,6 +36,7 @@ const Dashboard = () => {
 
         {(view === "dashboard" || view === "posts") && <Posts active={view} />}
         {view === "create" && <CreatePost changeView={changeView} />}
+        {view === "profile" && <Profile />}
       </DashView>
     </DashWrapper>
   );

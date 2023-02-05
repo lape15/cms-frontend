@@ -27,10 +27,21 @@ type Post = {
 export const savePost = async (post: Post) => {
   try {
     const data = await axios.post(`${url}post`, post);
-    console.log({ data });
     return true;
   } catch (err) {
     console.log(err);
     return false;
+  }
+};
+
+export const uploadProfilePhoto = async (file: File) => {
+  try {
+    const data = new FormData();
+    data.append("avatar", file);
+
+    const res = await axios.post(`${url}upload`, data);
+    console.log({ res });
+  } catch (err) {
+    console.log(err);
   }
 };
