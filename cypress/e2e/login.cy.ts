@@ -12,3 +12,5 @@ describe("Loginpage", () => {
     cy.url().should("include", "/dashboard");
   });
 });
+
+export {};

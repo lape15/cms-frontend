@@ -32,3 +32,4 @@ describe("template spec", () => {
     cy.get(".create_wrapper").should("be.visible");
   });
 });
+export {};

@@ -41,3 +41,4 @@ describe("template spec", () => {
     cy.url().should("include", "/dashboard");
   });
 });
+export {};
