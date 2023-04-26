@@ -1,0 +1,21 @@
+name: cms-frontend
+
+on:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run:  yarn install
+      - name: Run tests
+        run:  yarn cypress:open
+      - name: Run lint
+        run:  yarn lint
+      - name: build
+        run:  yarn build
+      
