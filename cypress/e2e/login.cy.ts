@@ -1,6 +1,7 @@
 describe("Loginpage", () => {
   it("passes", () => {
     cy.visit("/login");
+    cy.get("h3").should("be.visible");
   });
 
   it("submits user form after fields and routes to dashboard if credentials,valid", () => {
