@@ -47,7 +47,7 @@ const Login = () => {
   return (
     <LoginWrapper>
       <h3>Sign in with your email</h3>
-      <Form onSubmit={handleAdminLogin}>
+      <Form onSubmit={handleAdminLogin} id="form">
         <Input
           value={login.email}
           type="email"
