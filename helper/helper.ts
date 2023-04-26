@@ -7,7 +7,7 @@ type User = {
 
 export const addToStorage = (user: User, token: string) => {
   if (typeof window !== "undefined") {
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user || "{}"));
     localStorage.setItem("token", token);
   }
 };
@@ -24,7 +24,7 @@ export const getCredentials = () => {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     const credentials = {
-      user: JSON.parse(user || "{}"),
+      user: JSON.parse(user || "{}") || {},
       token,
     };
     return credentials;

@@ -17,6 +17,7 @@ const userObj = {
 };
 export default function Home() {
   const [user, setUser] = useState(userObj);
+  const [error, setError] = useState("");
   const router = useRouter();
   const upDateDetails = (key: string, value: string | number | boolean) => {
     setUser({
@@ -33,7 +34,7 @@ export default function Home() {
       if (!user[key as keyof typeof user]) errors.push(key);
     }
     if (errors.length !== 0) {
-      alert("Please fill in input fields!");
+      setError("Please fill in input fields!");
       return;
     }
     try {
@@ -44,16 +45,28 @@ export default function Home() {
       const userData = data.data.data;
       const token = data.data.token;
       addToStorage(userData, token);
+      setError("");
       router.push("/dashboard");
     } catch (err) {
       console.log(err);
+      setError("Error creating user!");
     }
   };
 
   return (
-    <LoginWrapper onSubmit={handleUserSignup}>
+    <LoginWrapper onSubmit={handleUserSignup} className="form">
       <h2>Sign Up to use as Admin</h2>
       <Form>
+        {error && (
+          <p
+            className="err"
+            style={{
+              color: "red",
+            }}
+          >
+            {error}
+          </p>
+        )}
         <Input
           value={user.firstName}
           type="text"
@@ -89,7 +102,9 @@ export default function Home() {
           upDater={upDateDetails}
           prop="confirmPassword"
         />
-        <Button type="submit">Join</Button>
+        <Button type="submit" className="btn">
+          Join
+        </Button>
       </Form>
       <LinkWrapper>
         Already have an account? &nbsp; <Link href="/login">Login</Link>

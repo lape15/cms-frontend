@@ -33,7 +33,7 @@ export const CreatePost = (props: CreateProp) => {
   };
 
   return (
-    <CreateWrapper>
+    <CreateWrapper className="create_wrapper">
       <div className="head">
         <h2>Create new post</h2>
         <Btns>

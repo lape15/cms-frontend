@@ -14,12 +14,13 @@ export const SideMenu = (props: MenuProp) => {
   };
 
   return (
-    <MenuWrapper>
+    <MenuWrapper className="menu">
       {views.map((view, indx) => (
         <Item
           key={indx}
           onClick={() => changeView(view.value)}
           className={`${activeClass(view.value)}`}
+          id={view.value}
         >
           <span>{view.name}</span>
         </Item>

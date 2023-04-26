@@ -22,7 +22,7 @@ export const Input = (props: InputProp) => {
   return (
     <InputWrapper>
       <label>{label}</label>
-      <input type={type} value={val} onChange={handleChange} />
+      <input type={type} value={val} onChange={handleChange} name={prop} />
       {info && <p>{info}</p>}
     </InputWrapper>
   );
