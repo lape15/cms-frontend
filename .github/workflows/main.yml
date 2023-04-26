@@ -3,6 +3,7 @@ name: cms-frontend
 on:
   push:
     branches: [main]
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,16 +12,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: yarn install
-      - name: Checkout
-        uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+      - name: Run lint
+        run: yarn lint
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
+          build: yarn build
       - name: Run tests
-        run: yarn cypress:open
-      - name: Run lint
-        run: yarn lint
-      - name: build
-        run: yarn build
+        run: yarn cypress:run
