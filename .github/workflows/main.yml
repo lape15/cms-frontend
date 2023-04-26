@@ -6,16 +6,21 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Install dependencies
-        run:  yarn install
+        run: yarn install
+      - name: Checkout
+        uses: actions/checkout@v3
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
       - name: Run tests
-        run:  yarn cypress:open
+        run: yarn cypress:open
       - name: Run lint
-        run:  yarn lint
+        run: yarn lint
       - name: build
-        run:  yarn build
-      
+        run: yarn build
