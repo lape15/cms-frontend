@@ -19,7 +19,15 @@ jobs:
         run: yarn build
       - name: Start app
         run: yarn start
-        # The '&' symbol is added to run the command in the background
+      - name: Wait for app to start
+        run: |
+          n=0
+          until [ $n -ge 20 ]
+          do
+            curl -s http://127.0.0.1:3000 && break
+            n=$[$n+1]
+            sleep 10
+          done
 
       - name: Cypress run
         uses: cypress-io/github-action@v5
