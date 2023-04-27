@@ -16,8 +16,9 @@ jobs:
       - name: Run lint
         run: yarn lint
       - name: Start app
-        run: yarn start & wait-on http://localhost:3030
+        run: yarn start & wait-on http://localhost:3000
         # The '&' symbol is added to run the command in the background
+
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
