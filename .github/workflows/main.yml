@@ -23,6 +23,5 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
-          build: yarn build
       - name: Run tests
         run: yarn cypress:run
