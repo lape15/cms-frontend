@@ -18,7 +18,7 @@ jobs:
       - name: Run build
         run: yarn build
       - name: Start app
-        run: yarn start & wait-on http://localhost:3000
+        run: yarn start
         # The '&' symbol is added to run the command in the background
 
       - name: Cypress run
